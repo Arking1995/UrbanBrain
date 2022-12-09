@@ -1,6 +1,9 @@
 """
 This file is the interface file between the UI code and logic
 """
+import GlobalMapper
+
+global_mapper = None
 
 def Initialize(params: dict):
     """
@@ -16,6 +19,7 @@ def get_tSNE():
     Return the current tSNE img result
     :return: np.array: H x W x 3
     """
+    return GlobalMapper.cur_latent.copy()
     raise NotImplementedError('Not implemented yet')
 
 
@@ -24,16 +28,17 @@ def get_layout_img():
     Return the current layout img result
     :return: np.array: H x W x 3
     """
+    return GlobalMapper.cur_laytout.copy()
     raise NotImplementedError('Not implemented yet')
 
 
-def tSNE_Poke(start: list, end: list, cur:list):
+def tSNE_Poke(start: list, end: list, fract: float):
     """
     Given the start, end, cur xy pixel position, compute the layout given the current xy pixel position.
     :param start: [x, y]
     :param end: [x, y]
-    :param cur: [x, y]
-    :return: t-SNE image, np.array: H x W x 3
+    :param fract: 0~1 float
+    :return: Layout image, np.array: H x W x 3
     """
     raise NotImplementedError('Not implemented yet')
 
