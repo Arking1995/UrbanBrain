@@ -1,1 +1,4 @@
 .idea/
+**/.__pycache__
+app/GUI/Utils/__pycache__/
+
