@@ -12,6 +12,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QImage
 import numpy as np
 import matplotlib.pyplot as plt
 from Utils.utils import *
+from UrbanCtrl import UrbanCtrl
 
 
 class Urban_Ctrl_UI(QMainWindow):
@@ -26,8 +27,10 @@ class Urban_Ctrl_UI(QMainWindow):
 
         # DBG
         test_img = read_img('Imgs/NY.jpg')
+        self.layout_img = UrbanCtrl.get_layout_img()
+
         update_img_widget(self.latent_widget, test_img)
-        update_img_widget(self.layout_widget, test_img)
+        update_img_widget(self.layout_widget, self.layout_img)
 
         self.show()
 
@@ -36,6 +39,11 @@ class Urban_Ctrl_UI(QMainWindow):
         self.left, self.top = 400, 400
         self.width, self.height = 1720, 1080
 
+        params = {
+            "pretrained_dir": 'UrbanCtrl/pretrained_model',
+            "results_dir": 'UrbanCtrl/results',
+        }
+        UrbanCtrl.Initialize(params)
 
     def initialize_widgets(self):
         self.setWindowTitle(self.title)

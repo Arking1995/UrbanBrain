@@ -1,7 +1,7 @@
 """
 This file is the interface file between the UI code and logic
 """
-import GlobalMapper
+from . import GlobalMapper
 import numpy as np
 
 global_mapper = None
@@ -12,11 +12,7 @@ def Initialize(params: dict):
     :param params: A dictionary that has all the params that backend needs
     :return: True/False to describe if the initialization succeed.
     """
-    params = {
-    "pretrained_dir": '../UrbanCtrl/pretrained_model',
-    "results_dir": '../UrbanCtrl/results',
-    }
-
+    global global_mapper
     global_mapper = GlobalMapper.GlobalMapper(params)
     pass
 
@@ -35,6 +31,8 @@ def get_layout_img():
     Return the current layout img result
     :return: np.array: H x W x 3
     """
+    global global_mapper
+
     _, _ = global_mapper.get_latent()
     return global_mapper.get_layout().copy()
     # raise NotImplementedError('Not implemented yet')
