@@ -2,7 +2,7 @@
 Backend Implementation
 """
 from Backend.model import *
-from geometry_utlis import *
+from Backend.geometry_utlis import *
 import yaml
 import os
 import numpy as np
