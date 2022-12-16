@@ -12,6 +12,12 @@ def Initialize(params: dict):
     :param params: A dictionary that has all the params that backend needs
     :return: True/False to describe if the initialization succeed.
     """
+    params = {
+    "pretrained_dir": '../UrbanCtrl/pretrained_model',
+    "results_dir": '../UrbanCtrl/results',
+    }
+
+    global_mapper = GlobalMapper.GlobalMapper(params)
     pass
 
 
@@ -20,7 +26,7 @@ def get_tSNE():
     Return the current tSNE img result
     :return: np.array: H x W x 3
     """
-    return GlobalMapper.cur_latent.copy()
+    # return GlobalMapper.cur_latent.copy()
     raise NotImplementedError('Not implemented yet')
 
 
@@ -29,8 +35,9 @@ def get_layout_img():
     Return the current layout img result
     :return: np.array: H x W x 3
     """
-    return GlobalMapper.cur_laytout.copy()
-    raise NotImplementedError('Not implemented yet')
+    _, _ = global_mapper.get_latent()
+    return global_mapper.get_layout().copy()
+    # raise NotImplementedError('Not implemented yet')
 
 
 def tSNE_Poke(start: list, end: list, fract: float):
