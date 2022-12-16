@@ -2,6 +2,7 @@
 This file is the interface file between the UI code and logic
 """
 import GlobalMapper
+import numpy as np
 
 global_mapper = None
 
